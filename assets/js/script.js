@@ -32,7 +32,7 @@ setInterval(compareTime, 3600000);
 
 function compareTime() { 
   var currentHourEl = $("#hour-" + currentDate.hour); // currentDate.hour()
-
+console.log(currentHourEl)
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
       currentHourEl.addClass('present');
       currentHourEl.removeClass('future');
