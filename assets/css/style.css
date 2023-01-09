@@ -53,6 +53,14 @@ textarea {
   color: white;
 }
 
+/* #clear-btn {
+  border-left: 2px solid black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #023c49;
+  color: white;
+} */
+
 .saveBtn i:hover {
   font-size: 20px;
   background-color: #023c49;
