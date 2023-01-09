@@ -15,6 +15,10 @@ $(".saveBtn").on("click", function(event) {
   localStorage.setItem(key, value);
 });
 
+$("#clear-rowbtn").on('click', function(event) {
+  $(".description").val("")
+});
+
 const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 
