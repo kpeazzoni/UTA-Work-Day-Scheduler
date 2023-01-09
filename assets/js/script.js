@@ -15,14 +15,19 @@ $(".saveBtn").on("click", function(event) {
   localStorage.setItem(key, value);
 });
 
-$("#clear-rowbtn").on('click', function(event) {
+$("#clear-btn").on('click', function(event) {
   $(".description").val("")
 });
 
 const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
+const currentDate = dayjs();
+const delay = 60 - currentDate.minute();
 
-setInterval(compareTime, 3600000);
+setTimeout(() => {
+  setInterval(compareTime, 3600000);
+}, delay);
+
 setInterval(displayTime, 1000);
 
 function displayTime() {
@@ -30,8 +35,8 @@ function displayTime() {
   dateTime.text(currentDateFormatted); 
 }
 
+
 function compareTime() { 
-  const currentDate = dayjs();
   const currentHourEl = $("#hour-" + currentDate.hour());
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
       currentHourEl.addClass('present');
