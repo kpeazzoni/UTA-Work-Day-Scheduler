@@ -29,7 +29,7 @@ THEN the saved events persist
 ## Table of Contents
 
 - [Usage](#usage)
-- [Credits](#credits)
+- [Credits](#credits) collaborated with Myeonghun Jeong, Christopher Zavala
 - [License](#license)
 - [Mock-up](#mock-up)
 
