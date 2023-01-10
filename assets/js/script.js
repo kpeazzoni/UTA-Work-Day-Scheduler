@@ -20,8 +20,6 @@ $("#clear-btn").on('click', function(event) {
 
 const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
-const currentDate = dayjs();
-
 
 setInterval(displayTime, 1000); 
 setInterval(updateProjectBlocks, 1000);
@@ -32,12 +30,13 @@ function displayTime() {
 }
 
 function updateProjectBlocks() { 
+  const currentDate = dayjs();
   const currentHourEl = $("#hour-" + currentDate.hour());
  console.log("is this working?")
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
     currentHourEl.addClass('present');
     currentHourEl.removeClass('future');
-
+console.log('current date', currentDate);
     const pastHour = $("#hour-" + (currentDate.hour() - 1));
     if (pastHour != null && pastHour.hasClass('present'))
         pastHour.addClass('past');
