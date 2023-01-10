@@ -22,7 +22,7 @@ const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 const currentDate = dayjs();
 
-setInterval(updateProjectBlocks, 10000);
+setInterval(updateProjectBlocks, 100000);
 setInterval(displayTime, 1000); 
 
 function displayTime() {
@@ -32,7 +32,7 @@ function displayTime() {
 
 function updateProjectBlocks() { 
   const currentHourEl = $("#hour-" + currentDate.hour());
- 
+ console.log("is this working?")
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
     currentHourEl.addClass('present');
     currentHourEl.removeClass('future');
