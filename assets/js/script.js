@@ -22,8 +22,8 @@ const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 const currentDate = dayjs();
 
-setInterval(updateProjectBlocks, 120000);
-setInterval(displayTime, 1000);
+setInterval(updateProjectBlocks, 10000);
+setInterval(displayTime, 1000); 
 
 function displayTime() {
   const currentDateFormatted = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
