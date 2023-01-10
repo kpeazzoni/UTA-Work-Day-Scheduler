@@ -5,7 +5,7 @@ $( document ).ready(function() {
     const value = localStorage.getItem(id);
     $(this).find(".description").val(value);
   });
-  compareTime();
+  updateProjectBlocks();
 });
 
 $(".saveBtn").on("click", function(event) {
@@ -22,7 +22,7 @@ const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 const currentDate = dayjs();
 
-setInterval(compareTime, 120000);
+setInterval(updateProjectBlocks, 120000);
 setInterval(displayTime, 1000);
 
 function displayTime() {
@@ -30,7 +30,7 @@ function displayTime() {
   dateTime.text(currentDateFormatted); 
 }
 
-function compareTime() { 
+function updateProjectBlocks() { 
   const currentHourEl = $("#hour-" + currentDate.hour());
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
       currentHourEl.addClass('present');
