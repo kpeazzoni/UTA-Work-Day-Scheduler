@@ -22,7 +22,7 @@ const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 const currentDate = dayjs();
 
-setInterval(updateProjectBlocks, 100000);
+setInterval(updateProjectBlocks, 1000);
 setInterval(displayTime, 1000); 
 
 function displayTime() {
