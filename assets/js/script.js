@@ -1,12 +1,11 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+
 $( document ).ready(function() {
   $('.time-block').each(function(i, obj) {
     const id = $(this).attr('id');
     const value = localStorage.getItem(id);
     $(this).find(".description").val(value);
   });
+  compareTime();
 });
 
 $(".saveBtn").on("click", function(event) {
@@ -22,19 +21,14 @@ $("#clear-btn").on('click', function(event) {
 const dateTime = $("#date-time");
 let LastOfficeHour = 17; 
 const currentDate = dayjs();
-const delay = 60 - currentDate.minute();
 
-setTimeout(() => {
-  setInterval(compareTime, 3600000);
-}, delay);
-
+setInterval(compareTime, 120000);
 setInterval(displayTime, 1000);
 
 function displayTime() {
   const currentDateFormatted = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
   dateTime.text(currentDateFormatted); 
 }
-
 
 function compareTime() { 
   const currentHourEl = $("#hour-" + currentDate.hour());
@@ -43,8 +37,9 @@ function compareTime() {
       currentHourEl.removeClass('future');
 
       const pastHour = $("#hour-" + (currentDate.hour() - 1));
-      pastHour.addClass('past');
-      pastHour.removeClass('present');
+      if (pastHour != null && pastHour.hasClass('present'))
+          pastHour.addClass('past');
+          pastHour.removeClass('present');
     } else if (currentHourEl > LastOfficeHour) {
     $('.present').addClass('past');
     $('.past').removeClass('present');
