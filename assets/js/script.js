@@ -26,26 +26,27 @@ setInterval(updateProjectBlocks, 10000);
 setInterval(displayTime, 1000); 
 
 function displayTime() {
-  const currentDateFormatted = dayjs().format('dddd, MMMM D YYYY, h:mm:ss a');
+  const currentDateFormatted = dayjs().format('dddd, MMMM D YYYY, hh:mm:ss a');
   dateTime.text(currentDateFormatted); 
 }
 
 function updateProjectBlocks() { 
   const currentHourEl = $("#hour-" + currentDate.hour());
+ 
   if (currentHourEl != null && currentHourEl.hasClass('future')) {
-      currentHourEl.addClass('present');
-      currentHourEl.removeClass('future');
+    currentHourEl.addClass('present');
+    currentHourEl.removeClass('future');
 
-      const pastHour = $("#hour-" + (currentDate.hour() - 1));
-      if (pastHour != null && pastHour.hasClass('present'))
-          pastHour.addClass('past');
-          pastHour.removeClass('present');
-    } else if (currentHourEl > LastOfficeHour) {
-    $('.present').addClass('past');
-    $('.past').removeClass('present');
-  } 
+    const pastHour = $("#hour-" + (currentDate.hour() - 1));
+    if (pastHour != null && pastHour.hasClass('present'))
+        pastHour.addClass('past');
+        pastHour.removeClass('present');
+  } else if (currentDate.hour() > LastOfficeHour) {
+  $('.present').addClass('past');
+  $('.past').removeClass('present');
+} 
 
-  if (currentDate.hour() == 00) {
+  if (currentDate.hour() == 24) {
     $('.past').addClass('future');
     $('.future').removeClass('past');
   }
